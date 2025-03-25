@@ -1,0 +1,5 @@
+{
+  "tailwindFunctions": ["apply"],
+  "tailwindAttributes": ["@apply"],
+  "singleAttributePerLine": false
+}
