@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 const AuthLayout = async ({ children }: { children: ReactNode }) => {
     return (
         <>
-            <div>{children}</div>
+            <div className="auth-layout">{children}</div>
         </>
     );
 };

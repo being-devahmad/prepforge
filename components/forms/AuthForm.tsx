@@ -12,6 +12,9 @@ import { Button } from '../ui/button';
 import { Form } from '../ui/form';
 import { toast } from 'sonner';
 import FormField from './FormField';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '@/firebase/client';
+import { signIn, signUp } from '@/actions/auth';
 
 const authFormSchema = (type: FormType) => {
     return z.object({
@@ -36,22 +39,50 @@ const AuthForm = ({ type }: { type: FormType }) => {
     });
 
 
-   
+
 
     // 2. Define a submit handler
-    const onSubmit = async (data: z.infer<typeof formSchema>) => { 
+    const onSubmit = async (data: z.infer<typeof formSchema>) => {
         try {
             if (type === "sign-up") {
                 const { name, email, password } = data;
+                const userCredentials = await createUserWithEmailAndPassword(auth, email, password)
+                console.log("userCredentials--->", userCredentials)
 
-                console.log("name -> email -> password-->", name, email, password)
+                const result = await signUp({
+                    uid: userCredentials.user.uid,
+                    name: name!,
+                    email,
+                    password
+                })
 
+                console.log("result-->", result)
+
+                if(!result?.success){
+                    toast.error(result?.message);
+                    return;
+                }
                 toast.success("Account created successfully. Please sign in.");
                 router.push("/sign-in");
             } else {
                 const { email, password } = data;
 
-                console.log("email -> password-->", email, password)
+                const userCredential = await signInWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                  );
+          
+                  const idToken = await userCredential.user.getIdToken();
+                  if (!idToken) {
+                    toast.error("Sign in Failed. Please try again.");
+                    return;
+                  }
+          
+                  await signIn({
+                    email,
+                    idToken,
+                  });
 
                 toast.success("Signed in successfully.");
                 router.push("/");
