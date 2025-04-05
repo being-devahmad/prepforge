@@ -1,3 +1,4 @@
+
 enum MessageTypeEnum {
   TRANSCRIPT = "transcript",
   FUNCTION_CALL = "function-call",
