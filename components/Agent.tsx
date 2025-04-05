@@ -69,6 +69,7 @@ const Agent = ({
 
     useEffect(() => {
         if (callStatus === CallStatus.FINISHED) router.push('/')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [messages, callStatus, type, userId])
 
     const handleCall = async () => {
