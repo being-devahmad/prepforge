@@ -1,121 +1,150 @@
-<div align="center">
-  <br />
-    <a href="https://www.youtube.com/watch?v=8GK8R77Bd7g" target="_blank">
-      <img src="https://github.com/user-attachments/assets/1c0131c7-9f2d-4e3b-b47c-9679e76d8f9a" alt="Project Banner">
-    </a>
-  <br />
-  
-  <div>
-    <img src="https://img.shields.io/badge/-Next.JS-black?style=for-the-badge&logoColor=white&logo=nextdotjs&color=black" alt="next.js" />
-    <img src="https://img.shields.io/badge/-Vapi-white?style=for-the-badge&color=5dfeca" alt="vapi" />
-    <img src="https://img.shields.io/badge/-Tailwind_CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=06B6D4" alt="tailwindcss" />
-    <img src="https://img.shields.io/badge/-Firebase-black?style=for-the-badge&logoColor=white&logo=firebase&color=DD2C00" alt="firebase" />
-  </div>
+# 🎓 Prepforge
 
-  <h3 align="center">Prepforge: A job interview preparation platform powered by Vapi AI Voice agents</h3>
-</div>
+Prepforge is your intelligent job interview preparation assistant. Powered by **Next.js**, **Firebase**, **TailwindCSS**, **Vapi AI**, and **Google Gemini**, it offers an immersive and modern platform where users can create, conduct, and get feedback on mock interviews with AI-powered voice agents.
 
-## 📋 <a name="table">Table of Contents</a>
+## 🤖 Introduction
 
-1. 🤖 [Introduction](#introduction)
-2. ⚙️ [Tech Stack](#tech-stack)
-3. 🔋 [Features](#features)
-4. 🤸 [Quick Start](#quick-start)
-5. 🕸️ [Snippets (Code to Copy)](#snippets)
-6. 🔗 [Assets](#links)
-7. 🚀 [More](#more)
+Prepforge is a voice-interview training web app built to help developers and job seekers experience and learn how to integrate AI into real-world applications. With a combination of modern tools and intelligent agents, Prepforge simulates realistic job interviews and provides actionable AI feedback in real time.
 
-## <a name="introduction">🤖 Introduction</a>
+Whether you're learning AI integration or preparing for your next big opportunity, Prepforge offers a hands-on, dynamic environment.
 
-Built with Next.js for the user interface and backend logic, Firebase for authentication and data storage, styled with TailwindCSS and using Vapi's voice agents, Prepwise is a website project designed to help you learn integrating AI models with your apps. The platform offers a sleek and modern experience for job interview preparation.
+---
 
-## <a name="tech-stack">⚙️ Tech Stack</a>
+## ⚙️ Tech Stack
 
-- Next.js
-- Firebase
-- Tailwind CSS
-- Vapi AI
-- shadcn/ui
-- Google Gemeni
-- Zod
+| Tech         | Purpose                                      |
+|--------------|----------------------------------------------|
+| **Next.js**  | Full-stack React framework for web app       |
+| **Firebase** | Authentication and real-time data storage    |
+| **TailwindCSS** | Utility-first styling for modern UI       |
+| **Vapi AI**  | Voice-based AI agents for interviews         |
+| **shadcn/ui**| Accessible and beautiful UI components       |
+| **Google Gemini** | LLM for feedback generation & Q&A       |
+| **Zod**      | Schema validation for forms and API routes   |
 
-## <a name="features">🔋 Features</a>
+---
 
-👉 **Authentication**: Sign Up and Sign In using password/email authentication handled by Firebase.
+## 🔋 Features
 
-👉 **Create Interviews**: Easily generate job interviews with help of Vapi voice assistants and Google Gemini.
+### 🔐 Authentication
+- Secure Sign Up / Sign In with Firebase email-password auth.
+- User session management built into the app with protected routes.
 
-👉 **Get feedback from AI**: Take the interview with AI voice agent, and receive instant feedback based on your conversation.
+### 🧠 Create Interviews
+- Start new interviews with a few clicks.
+- Choose role-specific prompts powered by Google Gemini and Vapi voice agents.
 
-👉 **Modern UI/UX**: A sleek and user-friendly interface designed for a great experience.
+### 🎧 AI Voice Interviews
+- Experience AI-driven voice-based interviews.
+- Built with Vapi's voice agents for realistic interaction.
 
-👉 **Interview Page**: Conduct AI-driven interviews with real-time feedback and detailed transcripts.
+### 📝 Real-time Feedback
+- After the interview, get instant AI-generated feedback and improvement suggestions.
+- Transcripts and scoring powered by Gemini.
 
-👉 **Dashboard**: Manage and track all your interviews with easy navigation.
+### 📊 Dashboard
+- View, manage, and organize past interviews.
+- Filter by role, date, or performance score.
 
-👉 **Responsiveness**: Fully responsive design that works seamlessly across devices.
+### 💡 Modern UI/UX
+- Clean, responsive layout using TailwindCSS and shadcn/ui.
+- Smooth navigation with accessible components.
 
-and many more, including code architecture and reusability
+### 📱 Responsive Design
+- Fully optimized for mobile, tablet, and desktop.
+- Great experience across all screen sizes.
 
-## <a name="quick-start">🤸 Quick Start</a>
+---
 
-Follow these steps to set up the project locally on your machine.
+## 🧱 Code Architecture
 
-**Prerequisites**
+Prepforge follows a modular, scalable architecture:
 
-Make sure you have the following installed on your machine:
+```
+/app
+  ├── interview/           # Routes related to interviews
+  ├── dashboard/           # User dashboard UI
+  ├── auth/                # Login and register flows
+  ├── layout.tsx           # Shared layout with header/footer
+  └── page.tsx             # Landing page
 
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager)
+/components
+  ├── ui/                  # Reusable UI components (shadcn-based)
+  └── interview/           # Specialized interview components
 
-**Cloning the Repository**
+/lib
+  ├── firebase.ts          # Firebase config
+  ├── validators/          # Zod schemas
+  └── vapi.ts              # Vapi voice agent logic
 
-```bash
-git clone https://github.com/adrianhajdin/ai_mock_interviews.git
-cd ai_mock_interviews
+/hooks
+  └── useAuth.ts           # Custom hooks for auth
+
+/utils
+  └── helpers.ts           # Utility functions
+
+/styles
+  └── globals.css          # Tailwind base styles
 ```
 
-**Installation**
+- **Type-Safe**: All forms and APIs use `Zod` for runtime validation.
+- **Reusability**: All UI components are modular and easily extendable.
+- **API Integration**: Voice and text AI responses from Gemini and Vapi are handled in clean utility modules.
 
-Install the project dependencies using npm:
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/your-username/prepwise.git
+cd prepwise
+```
+
+### 2. Install dependencies
 
 ```bash
 npm install
 ```
 
-**Set Up Environment Variables**
+### 3. Set up environment variables
 
-Create a new file named `.env.local` in the root of your project and add the following content:
+Create a `.env.local` file and add your Firebase and Vapi credentials:
 
 ```env
-NEXT_PUBLIC_VAPI_WEB_TOKEN=
-NEXT_PUBLIC_VAPI_WORKFLOW_ID=
-
-GOOGLE_GENERATIVE_AI_API_KEY=
-
-NEXT_PUBLIC_BASE_URL=
-
-NEXT_PUBLIC_FIREBASE_API_KEY=
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
-NEXT_PUBLIC_FIREBASE_APP_ID=
-
-FIREBASE_PROJECT_ID=
-FIREBASE_CLIENT_EMAIL=
-FIREBASE_PRIVATE_KEY=
+NEXT_PUBLIC_FIREBASE_API_KEY=...
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=...
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=...
+NEXT_PUBLIC_VAPI_API_KEY=...
+NEXT_PUBLIC_GEMINI_API_KEY=...
 ```
 
-Replace the placeholder values with your actual **[Firebase](https://firebase.google.com/)**, **[Vapi](https://vapi.ai/?utm_source=youtube&utm_medium=video&utm_campaign=jsmastery_recruitingpractice&utm_content=paid_partner&utm_term=recruitingpractice)** credentials.
-
-**Running the Project**
+### 4. Run the dev server
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
+---
 
+## 🧪 Future Improvements
+
+- 🌍 Multi-language support
+- 📈 Interview performance analytics
+- 🧑🏽‍💼 AI role persona customization
+- 🗂 Export transcripts to PDF
+- 🔔 Real-time notifications and reminders
+
+---
+
+## 📬 Feedback & Contributions
+
+We’d love your input! Open an issue or submit a pull request to contribute. Prepforge is a project not just to prepare for interviews—but to **learn how to integrate AI into real-world apps**.
+
+---
+
+## 📄 License
+
+MIT © 2025 - Prepforge Team
 
