@@ -39,8 +39,7 @@ const InterviewDetailsPage = async ({ params }: RouteParams) => {
             </div>
 
             <Agent
-                // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
-                userName={user?.name!}
+                userName={user?.name || ''}
                 userId={user?.id}
                 interviewId={id}
                 type="interview"

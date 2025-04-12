@@ -5,16 +5,18 @@ import { cn, getRandomInterviewCover } from '@/lib/utils';
 import { Button } from './ui/button';
 import Link from 'next/link';
 import DisplayTechIcons from './DisplayTechIcons';
+import { getFeedbackByInterviewId } from '@/actions/general.actions';
 
-const InterviewCard = ({
+const InterviewCard = async ({
     id,
     role,
+    userId,
     type,
     techstack,
     createdAt,
 }: InterviewCardProps) => {
 
-    const feedback = null as Feedback | null;
+    const feedback = userId && id ? await getFeedbackByInterviewId({ interviewId: id, userId }) : null;
     const normalizedType = /mix/gi.test(type) ? "Mixed" : type;
     const badgeColor =
         {
@@ -22,7 +24,7 @@ const InterviewCard = ({
             Mixed: "bg-light-600",
             Technical: "bg-light-800",
         }[normalizedType] || "bg-light-600";
-        
+
     const formattedDate = dayjs(
         feedback?.createdAt || createdAt || Date.now()
     ).format("MMM D, YYYY");
